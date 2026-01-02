@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh2tL75NAA_glehC0IPbbK09Qah6gfoy4&libraries=maps,marker&v=weekly"
+        defer></script>
+
+<div class="jumbotron">
+    <h1>Weather Forecast</h1>
+    <p class="lead">Click on any map location to get its weather forecast</p>
+</div>
+
+
+<div class="row" style="height: 100%; border: 1px solid #4CAF50;">
+    <div id="map">
+        <gmp-map center="41.5220656,-93.5840897"
+                 zoom="10"
+                 map-id="DEMO_MAP_ID"
+                 style="height: 95%">
+            <gmp-advanced-marker position="41.56144963264333,-93.62104648805105"
+                                 title="Forecast"
+                                 gmp-clickable></gmp-advanced-marker>
+
+        </gmp-map>
+    </div>
+</div>
+
+<div>
+    <h3>Forecast for Latitude <span id="spLat"></span> Longitude <span id="spLng"></span> 
+        <span id="spLocationName"></span>
+    </h3>
+</div>
+
+<div class="row" style="height: 100%; border: 1px solid blue; --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.5rem">
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-primary p-3 text-center text-white forecastday">
+            <div id="fcdiv-01">
+                <p>&nbsp;</p>
+                <img src="" />
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </div>
+            <div id="fcdiv-02">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-secondary p-3 text-center text-white forecastday" style="height: 100%">
+            <div class="popup-container" id="fcdiv-03">
+                &nbsp;
+            </div>
+            <div class="popup-container" id="fcdiv-04">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-success p-3 text-center text-white forecastday" style="height: 100%">
+            <div id="fcdiv-05">
+                &nbsp;
+            </div>
+            <div id="fcdiv-06">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-danger p-3 text-center text-white forecastday" style="height: 100%">
+            <div id="fcdiv-07">
+                &nbsp;
+            </div>
+            <div id="fcdiv-08">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-warning p-3 text-center text-white forecastday" style="height: 100%">
+            <div id="fcdiv-09">
+                &nbsp;
+            </div>
+            <div id="fcdiv-10">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="bg-info p-3 text-center text-white forecastday" style="height: 100%">
+            <div id="fcdiv-11">
+                &nbsp;
+            </div>
+            <div id="fcdiv-12">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+
+

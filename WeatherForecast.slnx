@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Api.WeatherForecast/Api.WeatherForecast.csproj" />
+  <Project Path="ForecastData/ForecastData.csproj" Id="3a84cd04-fe27-4dc2-b220-1b2751780fa4" />
+  <Project Path="WeatherForecast/WeatherForecast.csproj" Id="77ea59a4-c164-4280-9257-c651b3f6c0c3" />
+</Solution>
