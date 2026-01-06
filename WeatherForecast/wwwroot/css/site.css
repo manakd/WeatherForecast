@@ -57,3 +57,22 @@ abbr[title] {
     color: black;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item {
+    /*background-color: #f1f1f1;*/
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media (min-width: 600px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}

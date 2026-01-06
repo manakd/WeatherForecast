@@ -130,27 +130,45 @@ async function initMap1() {
 }
 
 function checkContainerSize() {
-    var maxHeight = 0;
-    $(".forecastday").each(function () {
-        if ($(this).height() > maxHeight) {
-            maxHeight = $(this).height();
-        }
-    });
-
-    // Also check height from the half-day forecasts added together
-    for (var i1 = 1; i1 <= 6; i1++) {
-        var dayNum = (i1 * 2) - 1;
-        var nightNum = i1 * 2;
-        var dayElementId = '#fcdiv-' + (dayNum < 10 ? '0' : '') + dayNum.toString();
-        var nightElementId = '#fcdiv-' + (nightNum < 10 ? '0' : '') + nightNum.toString();
-        var fullDayHeight = $(dayElementId).height() + $(nightElementId).height();
-        if (fullDayHeight > maxHeight) {
-            maxHeight = fullDayHeight * 1.02;
+    var mediaWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var nightAndDaySideBySide = (mediaWidth < 768 && mediaWidth >= 400);
+    
+    if (nightAndDaySideBySide) {
+        // Also check height from the half-day forecasts added together
+        for (var i1 = 1; i1 <= 6; i1++) {
+            var dayNum = (i1 * 2) - 1;
+            var nightNum = i1 * 2;
+            var dayElementId = '#fcdiv-' + (dayNum < 10 ? '0' : '') + dayNum.toString();
+            var nightElementId = '#fcdiv-' + (nightNum < 10 ? '0' : '') + nightNum.toString();
+            var fullDayHeight = Math.max($(dayElementId).height(), $(nightElementId).height());
+            var fullDayId = '#fc-day-0' + i1.toString();
+            $(fullDayId).height(fullDayHeight);
         }
     }
+    else {
+        var maxHeight = 0;
+        $(".forecastday").each(function () {
+            if ($(this).height() > maxHeight) {
+                maxHeight = $(this).height();
+            }
+        });
 
-    $(".forecastday").height(maxHeight);
-    $(".forecastcontainer").height(maxHeight + 10);
+        // Also check height from the half-day forecasts added together
+        for (var i1 = 1; i1 <= 6; i1++) {
+            var dayNum = (i1 * 2) - 1;
+            var nightNum = i1 * 2;
+            var dayElementId = '#fcdiv-' + (dayNum < 10 ? '0' : '') + dayNum.toString();
+            var nightElementId = '#fcdiv-' + (nightNum < 10 ? '0' : '') + nightNum.toString();
+            var fullDayHeight = $(dayElementId).height() + $(nightElementId).height();
+            if (fullDayHeight > maxHeight) {
+                maxHeight = fullDayHeight * 1.02;
+            }
+            //--alert($(dayElementId).width().toString() + ' night width: ' + $(nightElementId).width().toString());
+        }
+
+        $(".forecastday").height(maxHeight);
+        $(".forecastcontainer").height(maxHeight + 10);
+    }
 
 }
 
